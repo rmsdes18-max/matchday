@@ -1,0 +1,20 @@
+# Secrets & config — must never be committed
+.env
+.env.*
+*.key
+*.pem
+*.p12
+secrets*
+config.json
+credentials*
+*token*
+*secret*
+
+# Runtime / build
+data/
+node_modules/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
