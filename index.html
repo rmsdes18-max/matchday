@@ -117,18 +117,22 @@
   .lead{text-align:center;color:var(--muted);max-width:580px;margin:0 auto 44px;font-size:16px}
 
   /* ---------- FEATURES ---------- */
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
-  .feat{
-    background:linear-gradient(180deg,#1a1c1f,#161719);border:1px solid #26282c;border-radius:14px;padding:26px;
-    transition:.18s border-color,.18s transform;position:relative;
-  }
-  .feat:hover{border-color:rgba(212,175,55,.45);transform:translateY(-3px)}
-  .feat .ico{width:46px;height:46px;display:grid;place-items:center;border-radius:11px;background:var(--gold-soft);border:1px solid rgba(212,175,55,.25);margin-bottom:18px}
-  .feat .ico svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-  .feat h3{color:var(--text);font-size:17px;font-weight:700;margin-bottom:8px}
-  .feat p{color:var(--muted);font-size:14.5px}
-  .feat .tag{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:11px;color:var(--gold);background:var(--gold-soft);padding:5px 11px;border-radius:6px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;font-family:"Saira Condensed",sans-serif}
-  .feat .tag.new{color:var(--teal);background:rgba(93,202,165,.12)}
+  .feat-list{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}
+  /* accent per rând — auriu default, plus 3 culori tematice */
+  .feat-row{--acc:var(--gold);--acc-soft:rgba(212,175,55,.14);--acc-bd:rgba(212,175,55,.28);display:flex;align-items:flex-start;gap:14px;padding:15px 8px;border-bottom:1px solid #26282c;transition:.15s background;border-radius:8px}
+  .feat-row.c-teal{--acc:var(--teal);--acc-soft:rgba(93,202,165,.14);--acc-bd:rgba(93,202,165,.30)}
+  .feat-row.c-blue{--acc:#5B9BD5;--acc-soft:rgba(91,155,213,.14);--acc-bd:rgba(91,155,213,.30)}
+  .feat-row.c-coral{--acc:#E8805E;--acc-soft:rgba(232,128,94,.14);--acc-bd:rgba(232,128,94,.30)}
+  .feat-row:hover{background:rgba(255,255,255,.03)}
+  .feat-row .ico{width:26px;height:26px;flex-shrink:0;display:grid;place-items:center;margin-top:0}
+  .feat-row .ico svg{width:22px;height:22px;stroke:var(--acc);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .feat-body{flex:1;min-width:0}
+  .feat-row h3{color:var(--text);font-size:14px;font-weight:700;margin-bottom:3px;line-height:1.3}
+  .feat-row p{color:var(--muted);font-size:13px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .feat-row .tag{flex-shrink:0;margin-top:2px;display:inline-flex;align-items:center;font-size:10px;color:var(--acc);background:var(--acc-soft);padding:4px 9px;border-radius:5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;font-family:"Saira Condensed",sans-serif;white-space:nowrap}
+  /* fără linie agățată: ultimul rând al fiecărei coloane (ultimele 2 items) */
+  .feat-row:nth-last-child(-n+2){border-bottom:none}
+  @media(max-width:640px){.feat-list{grid-template-columns:1fr}.feat-row:nth-last-child(2){border-bottom:1px solid #26282c}}
 
   /* ---------- DISCORD MOCKUP ---------- */
   .discord{
@@ -347,6 +351,7 @@
   [data-reveal].in .reveal:nth-child(6){transition-delay:.25s}
   [data-reveal].in .reveal:nth-child(7){transition-delay:.30s}
   [data-reveal].in .reveal:nth-child(8){transition-delay:.35s}
+  [data-reveal].in .reveal:nth-child(9){transition-delay:.40s}
   .live-card{transition:box-shadow .6s var(--ease-out) .2s}
   [data-reveal].in .live-card{box-shadow:0 0 26px -8px rgba(242,63,67,.4)}
 
@@ -422,60 +427,70 @@
     <div class="eyebrow">What it does</div>
     <h2 class="display">Everything automatic, nothing manual</h2>
     <p class="lead">Matchday reads the official fixture list and handles the rest on its own. After <span class="ic">/setup</span> you never touch a button again.</p>
-    <div class="grid" data-reveal>
-      <div class="feat reveal">
+    <div class="feat-list" data-reveal>
+      <div class="feat-row reveal">
         <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M3 10h18M8 2v4M16 2v4"></path></svg></div>
-        <h3>Daily schedule</h3>
-        <p>Every morning it posts a clean board: last night's results with scores, plus what's coming up today — each match in everyone's local time.</p>
+        <div class="feat-body">
+          <h3>Daily schedule</h3>
+          <p>Every morning it posts last night's results and today's matches, each in everyone's local time.</p>
+        </div>
         <span class="tag">Daily 08:30</span>
       </div>
-      <div class="feat reveal">
+      <div class="feat-row reveal">
         <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M3 10h18M8 2v4M16 2v4"></path><circle cx="16" cy="16" r="3.2"></circle><path d="M16 14.6v1.4l1 .8"></path></svg></div>
-        <h3>Auto Discord events</h3>
-        <p>Creates a Guild Scheduled Event for every upcoming match — rolling, always the next ~48 hours. Members hit “Interested” and get pinged at kickoff.</p>
+        <div class="feat-body">
+          <h3>Auto Discord events</h3>
+          <p>Creates a Guild Scheduled Event for every match in the next 48h. Members click "Interested" and get pinged at kickoff.</p>
+        </div>
         <span class="tag">Rolling +48h</span>
       </div>
-      <div class="feat reveal">
+      <div class="feat-row reveal c-coral">
         <div class="ico"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v4M8 22h8"></path></svg></div>
-        <h3>A voice channel per match</h3>
-        <p>About 15 minutes before kickoff a temporary <span class="ic">🔴 Team vs Team</span> voice channel appears, so everyone gathers in one place. It's removed automatically after full time.</p>
+        <div class="feat-body">
+          <h3>Voice channel per match</h3>
+          <p>A temporary voice channel opens 15 min before kickoff and is removed automatically after full time.</p>
+        </div>
         <span class="tag">Temporary</span>
       </div>
-      <div class="feat reveal">
+      <div class="feat-row reveal c-coral">
         <div class="ico"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h8l-1 8 10-12h-8z"></path></svg></div>
-        <h3>Instant when you add it</h3>
-        <p>Join mid-tournament during a live match? The moment you run <span class="ic">/setup</span>, Matchday spins up that match's voice channel and event right away — no waiting for the next one.</p>
+        <div class="feat-body">
+          <h3>Instant when you add it</h3>
+          <p>Join mid-tournament? Run <span class="ic">/setup</span> and Matchday spins up the current match's channel and event immediately.</p>
+        </div>
         <span class="tag new">New</span>
       </div>
-      <div class="feat reveal">
+      <div class="feat-row reveal c-teal">
         <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6l-5 4H4a1 1 0 0 0-1 1Z"></path><path d="M15 8a4 4 0 0 1 0 8M17.5 5a8 8 0 0 1 0 14"></path></svg></div>
-        <h3>Kickoff ping</h3>
-        <p>When a match starts it drops a fun “LIVE now” ping to the self-assign <span class="ic">@World Cup</span> role — opt in or out with one click, no spam for anyone else.</p>
+        <div class="feat-body">
+          <h3>Kickoff ping</h3>
+          <p>Drops a "LIVE now" ping to the <span class="ic">@World Cup</span> role at kickoff. Opt in or out with one click.</p>
+        </div>
         <span class="tag">Opt-in role</span>
       </div>
-      <div class="feat reveal">
+      <div class="feat-row reveal c-teal">
         <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M6 4h12v5a6 6 0 0 1-12 0Z"></path><path d="M9 18h6M10 22h4M12 15v3"></path></svg></div>
-        <h3>Live standings</h3>
-        <p>All 12 groups with wins/draws/losses, goal difference and points — computed from real results. Switches to the knockout bracket automatically.</p>
+        <div class="feat-body">
+          <h3>Live standings</h3>
+          <p>All 12 groups with W/D/L, goal difference and points from real results. Switches to knockout bracket automatically.</p>
+        </div>
         <span class="tag">/standings</span>
       </div>
-      <div class="feat reveal">
+      <div class="feat-row reveal c-blue">
         <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"></rect><path d="M3 9h18M8 14h2M14 14h2"></path></svg></div>
-        <h3>Result cards</h3>
-        <p>At full time it posts a crisp image card — final score, halftime, scorers and venue — straight into your results channel.</p>
+        <div class="feat-body">
+          <h3>Result cards</h3>
+          <p>At full time it posts an image card with the final score, halftime, scorers and venue.</p>
+        </div>
         <span class="tag">At full time</span>
       </div>
-      <div class="feat reveal">
+      <div class="feat-row reveal c-blue">
         <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg></div>
-        <h3>Right time, everywhere</h3>
-        <p>Matches run across three host-country time zones. Matchday shows every kickoff as a Discord timestamp, so it's always correct in each member's own local time.</p>
+        <div class="feat-body">
+          <h3>Right time, everywhere</h3>
+          <p>Every kickoff is shown as a Discord timestamp, automatically correct in each member's local time zone.</p>
+        </div>
         <span class="tag">Timezone-safe</span>
-      </div>
-      <div class="feat reveal">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14"></path><circle cx="3" cy="7" r="0.6" fill="currentColor"></circle></svg></div>
-        <h3>One command, any server</h3>
-        <p>No config files, no dashboards. Invite the bot, run <span class="ic">/setup</span> and it builds the category, channels and role itself. Works on every server independently.</p>
-        <span class="tag">/setup</span>
       </div>
     </div>
   </div>
