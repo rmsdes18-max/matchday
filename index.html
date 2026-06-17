@@ -298,8 +298,8 @@
   .evb{display:inline-block;color:var(--gold);background:var(--gold-soft);border:1px solid rgba(212,175,55,.25);padding:8px 16px;border-radius:8px;font-weight:700;font-size:14px}
   .setnote{color:var(--muted);font-size:13.5px;text-align:center;max-width:640px;margin:20px auto 0}
   .setnote b{color:var(--d-text)}
-  .setgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;align-items:start;max-width:940px;margin:0 auto}
-  .setside{display:flex;flex-direction:column;gap:18px}
+  .setgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;align-items:stretch;max-width:940px;margin:0 auto}
+  .setside{display:flex;flex-direction:column;justify-content:space-between;gap:18px}
   .evtlabel{color:var(--gold);font-family:"Saira Condensed",sans-serif;text-transform:uppercase;letter-spacing:1px;font-size:12px;font-weight:700;margin-bottom:12px}
   .evtstack{position:relative;padding:0 18px 18px 0}
   .evtstack .eventcard{position:relative;z-index:2;margin:0;max-width:none}
@@ -502,28 +502,6 @@
         </div>
       </div>
     </div>
-
-    <p class="setnote">Asks only for the permissions it needs · tip: move the bot's role up in <b>Server Settings → Roles</b> so it can manage what it creates.</p>
-
-    <!-- voice lifecycle -->
-    <h3 class="subhead">A voice channel for every match — automatically</h3>
-    <div class="lifecycle" data-reveal>
-      <div class="lcstage reveal" style="transition-delay:.05s">
-        <div class="lctime">~15 min before</div>
-        <div class="lccard"><span class="vchip">🔴 Spain vs Uruguay</span><div class="lcsub">voice channel appears</div></div>
-      </div>
-      <div class="lcarrow reveal" style="transition-delay:.16s">→</div>
-      <div class="lcstage reveal" style="transition-delay:.27s">
-        <div class="lctime">Kick-off</div>
-        <div class="lccard live-card"><span class="vchip">🔴 Spain vs Uruguay <span class="live"></span></span><div class="lcsub">everyone gathers — <b style="color:#fff">LIVE</b></div></div>
-      </div>
-      <div class="lcarrow reveal" style="transition-delay:.38s">→</div>
-      <div class="lcstage reveal" style="transition-delay:.49s">
-        <div class="lctime">~1h after full time</div>
-        <div class="lccard removed"><span class="vchip">🔴 Spain vs Uruguay</span><div class="lcsub">auto-removed</div></div>
-      </div>
-    </div>
-    <p class="lifenote">Created ~15 minutes before kickoff · removed ~1 hour after full time. People can also hit <i>Interested</i> on each event and get pinged when it starts.</p>
   </div>
 </section>
 
