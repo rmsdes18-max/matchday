@@ -136,11 +136,10 @@
     border:1px solid #16171a;box-shadow:0 30px 80px -24px rgba(0,0,0,.7);
   }
   .rail{width:72px;background:var(--rail);flex-shrink:0;padding:12px 0;display:flex;flex-direction:column;align-items:center;gap:10px}
-  .rail .home{width:48px;height:48px;border-radius:16px;background:#16181b;display:grid;place-items:center;overflow:hidden;padding:5px}
-  .rail .home img{width:100%;height:100%;object-fit:contain}
+  .rail .home{width:48px;height:48px;border-radius:16px;background:#16181b;display:grid;place-items:center}
+  .rail .home svg{width:26px;height:26px;fill:#dcddde}
   .rail .sep{width:32px;height:2px;background:#2b2d31;border-radius:2px}
-  .rail .srv{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#D4AF37,#a8862a);display:grid;place-items:center;font-family:"Saira Condensed",sans-serif;font-weight:800;color:#1a1500;font-size:22px;position:relative}
-  .rail .srv svg{width:25px;height:25px;stroke:#1a1500;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .rail .srv{width:48px;height:48px;border-radius:16px;background:#36393f;display:grid;place-items:center;font-family:"Saira Condensed",sans-serif;font-weight:800;color:#dcddde;font-size:18px;position:relative}
   .rail .srv::before{content:"";position:absolute;left:-16px;top:50%;transform:translateY(-50%);width:4px;height:36px;background:#fff;border-radius:0 4px 4px 0}
   .rail .srv.alt{background:#2b2d31;color:var(--d-muted)}
 
@@ -153,7 +152,8 @@
   .chan:hover{background:#35373c;color:var(--d-text)}
   .chan.active{background:#404249;color:#fff}
   .chan svg{width:18px;height:18px;stroke:#80848e;fill:none;stroke-width:1.7;flex-shrink:0}
-  .chan .live{margin-left:auto;width:8px;height:8px;border-radius:50%;background:#f23f43;box-shadow:0 0 0 3px rgba(242,63,67,.2)}
+  .chan .live{margin-left:auto;width:8px;height:8px;border-radius:50%;background:#f23f43;box-shadow:0 0 0 3px rgba(242,63,67,.2);animation:livePulse 1.4s ease-in-out infinite}
+  @keyframes livePulse{0%,100%{opacity:1}50%{opacity:.35}}
   .vmember{padding:3px 8px 3px 30px;display:flex;align-items:center;gap:7px;color:var(--d-muted);font-size:13px}
   .vmember .av{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:10px;color:#fff;font-weight:700}
 
@@ -321,7 +321,7 @@
   .lccard.removed{opacity:.5}
   .vchip{display:inline-flex;align-items:center;gap:7px;color:#fff;font-size:14px;font-weight:600}
   .lccard.removed .vchip{text-decoration:line-through;color:var(--muted)}
-  .vchip .live{width:9px;height:9px;border-radius:50%;background:#f23f43;box-shadow:0 0 0 4px rgba(242,63,67,.18)}
+  .vchip .live{width:9px;height:9px;border-radius:50%;background:#f23f43;box-shadow:0 0 0 4px rgba(242,63,67,.18);animation:livePulse 1.4s ease-in-out infinite}
   .lcsub{color:var(--muted);font-size:12.5px;margin-top:8px}
   .lcarrow{font-size:0;align-self:center;height:2px;min-width:30px;background:#2c2e33;border-radius:2px;position:relative;overflow:hidden;margin-top:14px}
   .lcarrow::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--gold),rgba(212,175,55,.5));transform:scaleX(0);transform-origin:left}
@@ -370,6 +370,7 @@
     .lcarrow::after{transform:scaleX(1);transition:none}
     .live-card{transition:none}
     .strikeable{transition:none}
+    .chan .live,.vchip .live{animation:none}
   }
 </style>
 </head>
@@ -558,9 +559,9 @@
 
     <div class="discord">
       <div class="rail">
-        <div class="home"><img src="https://digitalhub.fifa.com/transform/157d23bf-7e13-4d7b-949e-5d27d340987e/WC26_Logo" alt="World Cup 2026" onerror="this.parentNode.textContent='WC'"></div>
+        <div class="home"><svg viewBox="0 0 28 20"><path d="M23.7 1.7A23 23 0 0 0 18 0l-.3.6a21 21 0 0 1 5 1.6A23 23 0 0 0 8.6 2.2a21 21 0 0 1 5-1.6L13.3 0a23 23 0 0 0-5.7 1.7A24 24 0 0 0 4 17.2a23 23 0 0 0 5.9 2.8l.8-1a15 15 0 0 1-2.4-1.2l.6-.5a16.5 16.5 0 0 0 14.2 0l.6.5a15 15 0 0 1-2.4 1.2l.7 1a23 23 0 0 0 6-2.8A24 24 0 0 0 23.7 1.7ZM10.7 14c-1.1 0-2-.9-2-2.1s.9-2.1 2-2.1 2 1 2 2.1-.9 2.1-2 2.1Zm6.6 0c-1.1 0-2-.9-2-2.1s.9-2.1 2-2.1 2 1 2 2.1-.9 2.1-2 2.1Z"/></svg></div>
         <div class="sep"></div>
-        <div class="srv"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="11" rx="4"/><path d="M6 11h4M8 9v4M15 11h.01M18 13h.01"/></svg></div>
+        <div class="srv">YS</div>
         <div class="srv alt">+</div>
       </div>
 
@@ -649,9 +650,9 @@
     <!-- second mockup: #results result card -->
     <div class="discord" style="margin-top:22px">
       <div class="rail">
-        <div class="home"><img src="https://digitalhub.fifa.com/transform/157d23bf-7e13-4d7b-949e-5d27d340987e/WC26_Logo" alt="World Cup 2026" onerror="this.parentNode.textContent='WC'"></div>
+        <div class="home"><svg viewBox="0 0 28 20"><path d="M23.7 1.7A23 23 0 0 0 18 0l-.3.6a21 21 0 0 1 5 1.6A23 23 0 0 0 8.6 2.2a21 21 0 0 1 5-1.6L13.3 0a23 23 0 0 0-5.7 1.7A24 24 0 0 0 4 17.2a23 23 0 0 0 5.9 2.8l.8-1a15 15 0 0 1-2.4-1.2l.6-.5a16.5 16.5 0 0 0 14.2 0l.6.5a15 15 0 0 1-2.4 1.2l.7 1a23 23 0 0 0 6-2.8A24 24 0 0 0 23.7 1.7ZM10.7 14c-1.1 0-2-.9-2-2.1s.9-2.1 2-2.1 2 1 2 2.1-.9 2.1-2 2.1Zm6.6 0c-1.1 0-2-.9-2-2.1s.9-2.1 2-2.1 2 1 2 2.1-.9 2.1-2 2.1Z"/></svg></div>
         <div class="sep"></div>
-        <div class="srv"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="11" rx="4"/><path d="M6 11h4M8 9v4M15 11h.01M18 13h.01"/></svg></div>
+        <div class="srv">YS</div>
       </div>
       <div class="channels">
         <div class="guildname">Your Server</div>
@@ -701,9 +702,9 @@
     <!-- third mockup: #announcements ping -->
     <div class="discord" style="margin-top:22px">
       <div class="rail">
-        <div class="home"><img src="https://digitalhub.fifa.com/transform/157d23bf-7e13-4d7b-949e-5d27d340987e/WC26_Logo" alt="World Cup 2026" onerror="this.parentNode.textContent='WC'"></div>
+        <div class="home"><svg viewBox="0 0 28 20"><path d="M23.7 1.7A23 23 0 0 0 18 0l-.3.6a21 21 0 0 1 5 1.6A23 23 0 0 0 8.6 2.2a21 21 0 0 1 5-1.6L13.3 0a23 23 0 0 0-5.7 1.7A24 24 0 0 0 4 17.2a23 23 0 0 0 5.9 2.8l.8-1a15 15 0 0 1-2.4-1.2l.6-.5a16.5 16.5 0 0 0 14.2 0l.6.5a15 15 0 0 1-2.4 1.2l.7 1a23 23 0 0 0 6-2.8A24 24 0 0 0 23.7 1.7ZM10.7 14c-1.1 0-2-.9-2-2.1s.9-2.1 2-2.1 2 1 2 2.1-.9 2.1-2 2.1Zm6.6 0c-1.1 0-2-.9-2-2.1s.9-2.1 2-2.1 2 1 2 2.1-.9 2.1-2 2.1Z"/></svg></div>
         <div class="sep"></div>
-        <div class="srv"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="11" rx="4"/><path d="M6 11h4M8 9v4M15 11h.01M18 13h.01"/></svg></div>
+        <div class="srv">YS</div>
       </div>
       <div class="channels">
         <div class="guildname">Your Server</div>
