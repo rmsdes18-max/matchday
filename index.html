@@ -184,6 +184,7 @@
   /* ====== REAL CARDS (PNG-like) ====== */
   .pngcard{background:var(--card-bg);border-radius:10px;overflow:hidden;max-width:540px;border-top:4px solid var(--gold);box-shadow:0 8px 28px -10px rgba(0,0,0,.6)}
   .pngcard .panel{background:var(--panel);margin:18px;border-radius:14px;padding:18px 20px}
+  .pngcard img.shot{display:block;width:100%;height:auto}
 
   /* digest card */
   .dg-title{font-family:"Saira Condensed",sans-serif;font-weight:800;text-transform:uppercase;text-align:center;color:#fff;font-size:24px;letter-spacing:1px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:6px}
@@ -410,7 +411,7 @@
     <div class="logo-fallback" id="lf">MATCHDAY</div>
     <div class="kicker">Matchday · World Cup 2026 bot</div>
     <h1 class="display">The World Cup 2026,<br>automated in <span class="gold">Discord</span></h1>
-    <p class="sub">Add Matchday to your server and it runs the whole tournament for you — a daily schedule, a Discord event and voice channel for every match, result cards and live standings. You just show up and watch.</p>
+    <p class="sub">Add Matchday to your server and it runs the whole tournament for you — a daily schedule, a Discord event and voice channel for every match, result cards, a live standings image and the full knockout bracket. You just show up and watch.</p>
     <div class="cta">
       <a class="btn primary" href="https://discord.com/oauth2/authorize?client_id=1516160410083004436&scope=bot+applications.commands&permissions=17601044466704">
         <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.2.5a18.3 18.3 0 0 1 4.3 1.4c-3.5-1.9-8.6-1.9-12.1 0A18.3 18.3 0 0 1 11.7 3.5L11.5 3A19.8 19.8 0 0 0 6.6 4.4 20.6 20.6 0 0 0 3 18.6 19.9 19.9 0 0 0 8.1 21l.6-.9a13 13 0 0 1-2-1c.2-.1.4-.3.5-.4 3.9 1.8 8.1 1.8 11.9 0l.6.4c-.7.4-1.3.7-2 1l.6.9a19.9 19.9 0 0 0 5-2.4 20.6 20.6 0 0 0-3-14.2ZM9.3 15.4c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.8.9 1.7 2c0 1.1-.8 2-1.7 2Zm5.4 0c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.8.9 1.7 2c0 1.1-.8 2-1.7 2Z"/></svg>
@@ -477,17 +478,17 @@
         <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M6 4h12v5a6 6 0 0 1-12 0Z"></path><path d="M9 18h6M10 22h4M12 15v3"></path></svg></div>
         <div class="feat-body">
           <h3>Live standings</h3>
-          <p>All 12 groups with W/D/L, goal difference and points from real results. Switches to knockout bracket automatically.</p>
+          <p>All 12 groups with W/D/L, goal difference and points from real results — auto-posted as an image every day, and on demand with <span class="ic">/standings</span>. Switches to the knockout bracket once the groups are done.</p>
         </div>
-        <span class="tag">/standings</span>
+        <span class="tag">Daily image</span>
       </div>
       <div class="feat-row reveal c-blue">
         <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"></rect><path d="M3 9h18M8 14h2M14 14h2"></path></svg></div>
         <div class="feat-body">
-          <h3>Result cards</h3>
-          <p>At full time it posts an image card with the final score, halftime, scorers and venue.</p>
+          <h3>Result &amp; bracket cards</h3>
+          <p>At full time it posts an image card with the final score, halftime, scorers and venue. In the knockout rounds the cards turn premium — a gold frame, glow and stars that intensify all the way to the final.</p>
         </div>
-        <span class="tag">At full time</span>
+        <span class="tag">Premium in KO</span>
       </div>
       <div class="feat-row reveal c-blue">
         <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg></div>
@@ -751,6 +752,39 @@
       </div>
     </div>
 
+    <!-- fourth mockup: #standings daily standings image -->
+    <div class="discord" style="margin-top:22px">
+      <div class="rail">
+        <div class="home"><svg viewBox="0 0 28 20"><path d="M23.7 1.7A23 23 0 0 0 18 0l-.3.6a21 21 0 0 1 5 1.6A23 23 0 0 0 8.6 2.2a21 21 0 0 1 5-1.6L13.3 0a23 23 0 0 0-5.7 1.7A24 24 0 0 0 4 17.2a23 23 0 0 0 5.9 2.8l.8-1a15 15 0 0 1-2.4-1.2l.6-.5a16.5 16.5 0 0 0 14.2 0l.6.5a15 15 0 0 1-2.4 1.2l.7 1a23 23 0 0 0 6-2.8A24 24 0 0 0 23.7 1.7ZM10.7 14c-1.1 0-2-.9-2-2.1s.9-2.1 2-2.1 2 1 2 2.1-.9 2.1-2 2.1Zm6.6 0c-1.1 0-2-.9-2-2.1s.9-2.1 2-2.1 2 1 2 2.1-.9 2.1-2 2.1Z"/></svg></div>
+        <div class="sep"></div>
+        <div class="srv">YS</div>
+      </div>
+      <div class="channels">
+        <div class="guildname">Your Server</div>
+        <div class="chanlist">
+          <div class="cat">⚽ World Cup 26</div>
+          <div class="chan"><svg viewBox="0 0 24 24"><path d="M4 9h16M4 15h16M10 3L8 21M16 3l-2 18"/></svg>match-schedule</div>
+          <div class="chan active"><svg viewBox="0 0 24 24"><path d="M4 9h16M4 15h16M10 3L8 21M16 3l-2 18"/></svg>standings</div>
+          <div class="chan"><svg viewBox="0 0 24 24"><path d="M4 9h16M4 15h16M10 3L8 21M16 3l-2 18"/></svg>results</div>
+        </div>
+      </div>
+      <div class="main">
+        <div class="chanhead"><svg viewBox="0 0 24 24"><path d="M4 9h16M4 15h16M10 3L8 21M16 3l-2 18"/></svg>standings <span class="topic">A fresh standings image, posted automatically every day</span></div>
+        <div class="feed">
+          <div class="msg">
+            <div class="ava"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="25.5"/><polygon points="32,23 40.6,29.2 37.3,39.3 26.7,39.3 23.4,29.2"/><path d="M32 23V7M40.6 29.2 56 24.5M37.3 39.3 46.5 52M26.7 39.3 17.5 52M23.4 29.2 8 24.5"/></svg></div>
+            <div class="body">
+              <div class="head"><span class="name">Matchday</span><span class="botchip">✓ App</span><span class="ts">today at 09:00</span></div>
+              <div class="attach-label">standings.png</div>
+              <div class="pngcard" style="max-width:560px">
+                <img class="shot" src="assets/standings.png" alt="Matchday standings card — all 12 World Cup groups with points, top two of each group marked as qualifying">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -759,7 +793,7 @@
   <div class="wrap">
     <div class="eyebrow">Slash commands</div>
     <h2 class="display">And manual, if you want</h2>
-    <p class="lead">Type <span class="ic">/</span> and Matchday replies instantly. Four for everyone, four for admins.</p>
+    <p class="lead">Type <span class="ic">/</span> and Matchday replies instantly. Five for everyone, four for admins.</p>
 
     <div class="cmdgrid" data-reveal>
 
@@ -824,6 +858,18 @@ Fri 12 Jun · <code>Gr.D</code> <b>19:00</b> · 🇺🇸 United States – 🇵�
 Thu 11 Jun · <code>Gr.A</code> 🇰🇷 South Korea <b>2–1</b> 🇨🇿 Czechia
 Wed 10 Jun · <code>Gr.E</code> 🇩🇪 Germany <b>2–1</b> 🇨🇮 Ivory Coast
 Wed 10 Jun · <code>Gr.H</code> 🇪🇸 Spain <b>3–1</b> 🇨🇻 Cape Verde</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmd reveal">
+        <div class="ch"><span class="cname">/bracket</span></div>
+        <div class="cdesc">The knockout bracket as an image — round of 16 to the final. Add <span class="ic">/bracket round:quarter-finals</span> for one round in detail.</div>
+        <div class="preview">
+          <div class="slashline"><span class="who">Jordan</span> used <span class="slashcmd">/bracket</span></div>
+          <div class="attach-label">bracket.png</div>
+          <div class="pngcard" style="max-width:100%">
+            <img class="shot" src="assets/bracket.png" alt="Matchday knockout bracket card — round of 16 through the final, winners highlighted in gold">
           </div>
         </div>
       </div>
